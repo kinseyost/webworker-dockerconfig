@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'
+
+  frontend:
+    build: ../webworker-uploads/
+    environment:
+      env_file: .env
+      NODE_ENV: development
+    ports:
+      - '3000:3000'
+    volumes:
+      - ../webworker-uploads:/usr/src/app
+
+  backend:
+    depends_on:
+      - mongo
+      - redis
+    build: ../webworker-server
+    links:
+      - mongo
+    environment:
+      env_file: .env
+      NODE_ENV: development
+      DOCKER_DB: 27107
+    ports:
+      - '8081:8081'
+    volumes:
+      - ../webworker-server/src:/usr/src/app/src
