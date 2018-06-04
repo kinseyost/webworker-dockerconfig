@@ -8,8 +8,25 @@ You must have docker [installed](https://docs.docker.com/engine/installation/)
 
 ## Running
 1. Create a new directory for running each of the containers in.
-2. Copy each of the above directories into that directory
-3. Navigate to the webworker-dockerconfig directory and run
 ```
+mkdir ~/http-proxy-poc
+cd ~/http-proxy-poc
+```
+2. Copy each of the above directories into that directory
+```
+git clone https://github.com/kinseyost/webworker-uploads.git
+```
+```
+git clone https://github.com/kinseyost/webworker-server.git
+```
+```
+git clone https://github.com/kinseyost/webworker-storage.git
+```
+```
+git clone https://github.com/kinseyost/webworker-dockerconfig.git
+```
+3. Navigate to the webworker-dockerconfig directory and run `docker-compose up`
+```
+cd webworker-dockerconfig
 docker-compose up
 ```
