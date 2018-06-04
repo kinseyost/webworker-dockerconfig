@@ -35,4 +35,12 @@ Docker will pull/build all of the necessary images
 Once this completes, you will be able to navigate to 
 [http://localhost:3000](http://localhost:3000)
 
+1. Click `Choose Files`
+2. Select some large files
+3. Click `Upload`
+4. View progress indicator
+5. Watch the logs from `storage` container which should reveal that it has recieved the files **proxied** through the `backend` server. 
+* Optional: Click cancel while the upload is in progress to see it stop!
+
+
 **Note**: If you have mongodb running in any other docker containers, you may have conflicts.  Make sure this to stop any conflicting services.
