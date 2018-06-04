@@ -31,4 +31,8 @@ cd webworker-dockerconfig
 docker-compose up
 ```
 
+Docker will pull/build all of the necessary images
+Once this completes, you will be able to navigate to 
+[http://localhost:3000](http://localhost:3000)
+
 **Note**: If you have mongodb running in any other docker containers, you may have conflicts.  Make sure this to stop any conflicting services.
