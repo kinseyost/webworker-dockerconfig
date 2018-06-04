@@ -2,14 +2,10 @@ version: "3"
 
 services:
 
-  mysql:
-    image: mysql
-    container_name: mysql
+  mongo:
+    image: mongo
     ports:
-      - '3306:3306'
-    environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - '27017:27017'
 
   frontend:
     build: ../webworker-uploads/
@@ -34,10 +30,10 @@ services:
 
   storage:
     depends_on:
-      - mysql
-    build: ../sequelize-playground
+      - mongo
+    build: ../webworker-storage
     links:
-      - mysql
+      - mongo
     environment:
       env_file: .env
       NODE_ENV: development
@@ -45,4 +41,4 @@ services:
     ports:
       - '8082:8082'
     volumes:
-      - ../sequelize-playground:/usr/src/app
+      - ../webworker-storage:/usr/src/app
